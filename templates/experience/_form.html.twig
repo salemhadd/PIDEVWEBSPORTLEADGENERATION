@@ -1,0 +1,12 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+<tr><td>  <button  class="btn ">{{ button_label|default('Save') }}</button></tr></td>
+{{ form_end(form) }}
+
+<table ALIGN="Center" >
+    <tr><td>{{ form_row(form.contenus,{'label':' contenus '} ) }}</td>
+    </tr>
+    <tr><td>{{ form_row(form.titre,{'label':' titre '} ) }}</td>
+    </tr>
+
+

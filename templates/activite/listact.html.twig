@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+{#<img src="./public/logo.png">#}
+{{ absolute_url(asset('logo.png')) }}
+{#<img src={{ absolute_url(asset('logo.png')) }}>#}
+<h1 align="center"> Liste Des Activités</h1>
+
+<table class="table table-bordered table-dark">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Duree</th>
+        <th scope="col">Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for activite in activites %}
+        <tr>
+
+            <td>{{ activite.nom }}</td>
+            <td>{{ activite.duree }}</td>
+            <td>{{ activite.type }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

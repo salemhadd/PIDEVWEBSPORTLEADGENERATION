@@ -1,0 +1,80 @@
+{% extends 'base2.html.twig' %}
+{% block content %}
+
+{% endblock %}
+{% block title %}Hello UserController!{% endblock %}
+
+
+
+{% block body %}
+
+
+
+    <h1>User List</h1>
+    <div class="d-flex align-items-center"><input class="form-control" type="search" id="search" placeholder="Search by Date">
+        <a class="btn btn-primary" value="tri" href="{{ path('order') }}"><i class="fa fa-sort"></i></a>
+    </div>
+
+
+
+
+
+    <h4><table align="left" border="2">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>username</td>
+                <td>lastname</td>
+                <td>Firstname</td>
+                <td>Image</td>
+                <td>Email</td>
+                <td>password</td>
+
+                <td>Birthday</td>
+                <td>Phone</td>
+                <td>Pays</td>
+                <td>Adress</td>
+                <td>Gender</td>
+                <td>UPDATE</td>
+                <td>DELETE</td>
+            </tr>
+            </thead>
+            <tbody id="all">
+            {% include 'user/rechercherajax.html.twig' %}
+            </tbody>
+            <tbody align="left" border="2" id="search">
+            </tbody>
+        </table>
+    </h4>
+
+
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+
+                currentRequest = $.ajax({
+
+                    url : "{{ path('rechercherajax') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+
+                    },
+                });
+                return false;
+            });
+        });
+
+    </script>
+{% endblock %}

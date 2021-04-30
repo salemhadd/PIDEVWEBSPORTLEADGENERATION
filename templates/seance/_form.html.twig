@@ -1,0 +1,21 @@
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+<div class="container-fluid">
+<table ALIGN="Center" >
+    <tr><td>{{ form_row(form.capacite,{'label':'Capacité'} ) }}</td>
+
+    </tr>
+    <tr><td>{{ form_row(form.idcoach,{'label':'Id Coach'} ) }}</td>
+
+    </tr>
+    <tr><td> {{ form_row(form.dates,{'label':'Date'} ) }}</td>
+
+    </tr>
+
+    <tr><td> {{ form_row(form.activiteid,{'label':'Activité'} ) }}</td>
+
+    </tr>
+
+    <tr><td align="Center"> <button class="btn btn-success">{{ button_label|default('Save') }}</button><tr><td>
+
+{{ form_end(form) }}
+</div>

@@ -1,0 +1,76 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}EmploiDuTemps {% endblock %}
+
+{% block body %}
+    <<div class="container-fluid">
+    <h1 class="m-0 font-weight-bold text-primary">Emploi du temps </h1>
+
+
+    <!-- Page Heading -->
+    <div class="card shadow-lg h-60 m-4 mt-8">
+    <div class="card-body">
+    <table class="table">
+    <script>
+        $(".recherche").on("submit", function(event) {
+            // prevent page reload
+            event.preventDefault();
+
+            $.ajax({
+                url: '{{ path('emploi_du_temps_index') }}',
+                type: 'POST',
+                success: function() {
+                    // perform dom update to show search results
+                }
+            });
+        });
+    </script>
+
+    <div class="card-body">
+    <form method="get" type="submit" id="recherche"
+          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input name="users"  class="form-control bg-light border-0 small" placeholder="Search for..."
+                   aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <a class="btn btn-primary" >
+                    <i class="fas fa-search fa-sm"></i>
+                </a>
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Idemploi</th>
+            <th>Idseance</th>
+            <th>Zone</th>
+            <th>Date</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for emploi_du_temp in emploi_du_temps %}
+            <tr>
+                <td>{{ emploi_du_temp.idemploi }}</td>
+                <td>{{ emploi_du_temp.idseance }}</td>
+                <td>{{ emploi_du_temp.idzone }}</td>
+                <td>{{ emploi_du_temp.datee|date('Y-m-d H:i:s')  }}</td>
+                <td>
+                    <a class="btn btn-danger btn-icon-split" href="{{ path('emploi_du_temps_show', {'idemploi': emploi_du_temp.idemploi}) }}">show</a>
+                    <a class="btn btn-info btn-icon-split" href="{{ path('emploi_du_temps_edit', {'idemploi': emploi_du_temp.idemploi}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a  class="btn btn-primary" href="{{ path('emploi_du_temps_new') }}">Create new</a>
+{% endblock %}

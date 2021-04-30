@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnement index{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h3 class="m-0 font-weight-bold text-primary">Abonnement </h3>
+
+
+    <!-- Page Heading -->
+    <div class="card shadow-lg h-75 m-4 mt-8">
+
+        <div class="card-body">
+            <script>
+                $(".recherche").on("submit", function(event) {
+                    // prevent page reload
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: '{{ path('abonnement_index') }}',
+                        type: 'POST',
+                        success: function() {
+                            // perform dom update to show search results
+                        }
+                    });
+                });
+            </script>
+
+            <div class="card-body">
+                <form method="get" type="submit" id="recherche"
+                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input name="users"  class="form-control bg-light border-0 small" placeholder="Search for..."
+                               aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <a class="btn btn-primary" >
+                                <i class="fas fa-search fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <br>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+
+
+                    <thead>
+            <tr>
+                <th>Numero Abonnement </th>
+                <th>Prix</th>
+                <th>Type</th>
+                <th>Activite</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+                <td>{{ abonnement.id }}</td>
+                <td>{{ abonnement.prix }}</td>
+                <td>{{ abonnement.type }}</td>
+                <td>{{ abonnement.activite }}</td>
+
+
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                    {% block telecharger %}
+                        <div class="col-md-3"><a href="{{path('generatePDF1')}}" class="btn btn-primary">Telecharger PDF</a> </div>
+
+                    {% endblock %}
+{% endblock %}

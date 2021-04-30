@@ -1,0 +1,55 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Table De Réclamation </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Contenu</th>
+                                    <th>Daterec</th>
+                                    <th>User</th>
+                                    <th>Type</th>
+                                    <th>Etat</th>
+                                    <th>actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for reclamation in reclamations %}
+                                <tr>
+                                    <td>{{ reclamation.id }}</td>
+                                    <td>{{ reclamation.contenu }}</td>
+                                    <td>{{ reclamation.daterec ? reclamation.daterec|date('Y-m-d') : '' }}</td>
+                                    <td>{{ reclamation.user }}</td>
+                                    <td>{{ reclamation.type }}</td>
+                                    <td>{{ reclamation.etat }}</td>
+                                    <td>
+                                        <a class="btn btn-info" href="{{ path('reclamation_show', {'id': reclamation.id}) }}">Afficher</a>
+                                        <a class="btn btn-warning" href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <a class="btn btn-success" href="{{ path('reclamation_new') }}">ajouter une réclamation</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}
+Statestiques etat réclamation
+{% endblock %}
+
+{% block body %}
+    <html>
+    <head></head>
+    <body>
+    <div class="container">
+        <div class="card shadow mb-4">
+    <div id="div_chart"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw(piechart, 'div_chart') }}
+    </script>
+        </div>
+    </div>
+    </body>
+    </html>
+{% endblock %}
+
+
+

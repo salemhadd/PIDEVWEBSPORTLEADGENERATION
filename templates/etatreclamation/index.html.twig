@@ -1,0 +1,48 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Etatreclamation index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">table etat réclamation </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Etat</th>
+                            <th>Couleur</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for etatreclamation in etatreclamations %}
+                        <tr>
+                            <td>{{ etatreclamation.id }}</td>
+                            <td>{{ etatreclamation.etat }}</td>
+                            <td>{{ etatreclamation.color }}</td>
+                            <td>
+                                <a class="btn btn-info" href="{{ path('etatreclamation_show', {'id': etatreclamation.id}) }}">Afficher</a>
+                                <a class="btn btn-warning" href="{{ path('etatreclamation_edit', {'id': etatreclamation.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a class="btn btn-success" href="{{ path('etatreclamation_new') }}">Ajouter un etat</a>
+                <a class="btn btn-outline-dark" href="{{ path('teststatsetatrec') }}">Stats</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activite index{% endblock %}
+{% block css %}
+    {{ parent() }}
+    {#     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    #}
+
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 20px;
+    }
+    .filterr{
+        display: block;
+        position: sticky;
+        top: 20px;
+    }
+
+</style>
+{% endblock %}
+{% block body %}
+    <div class="container js-filter"  style="margin-top: 3rem">
+        <div STYLE="margin-bottom: 3rem">
+        <div class="row">
+            <div class="col-md-3 js-filter-form">
+                {{ form_start(form,{attr:{class: 'filterr'}}) }}
+                    {{ form_row(form.q) }}
+                    <h5> types :</h5>
+                    {{ form_row(form.types) }}
+
+                <button type="submit" class="btn btn-primary w-100"> filter </button>
+                {{ form_end(form) }}
+
+
+            </div>
+            <div class="col-md-9">
+                <div class="d-flex justify-content-end mb-2 js-filter-sorting">
+                    {{ knp_pagination_sortable(activites, 'Nom', 'a.nom') }}
+                    {{ knp_pagination_sortable(activites, 'Duree', 'a.duree') }}
+                </div>
+                <div class="grid js-filter-content">
+                    {% for activite in activites %}
+                        <div class="card border=">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"> Nom : {{ activite.nom }} </h5>
+                                <div class="card-title">
+                                    Durée : {{ activite.duree }}
+                                </div>
+                                <div class="card-title">
+                                    Type : {{ activite.type }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="js-filter-pagination">
+                    {{ knp_pagination_render(activites) }}
+                </div>
+                <a class="btn btn-info" href="{{ path('liste_activitespdf') }}">Imprimer liste des activités </a>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

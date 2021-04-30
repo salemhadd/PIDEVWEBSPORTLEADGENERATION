@@ -1,0 +1,51 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+<tr><td>  <button  class="btn ">{{ button_label|default('Save') }}</button></tr></td>
+{{ form_end(form) }}
+
+<table ALIGN="Center" >
+    <div class="form wow fadeInUp" data-wow-delay="0.3s">
+
+    <tr><td>{{ form_row(form.username,{'label':' username '} ) }}</td>
+    </div>
+    </tr>
+    <tr><td>{{ form_row(form.lastname,{'label':' lastname '} ) }}</td>
+    </tr>
+    <tr><td>{{ form_row(form.firstname,{'label':' firstname '} ) }} </td>
+    </tr>
+    <tr><td>{{ form_row(form.image,{'label':' image '} ) }}</td>
+    </tr>
+    <tr><td>{{ form_row(form.email,{'label':' email '} ) }}</td>
+    </tr>
+    <tr><td>{{ form_row(form.password,{'label':' password '} ) }} </td>
+    </tr>
+
+    <tr><td>{{ form_row(form.birthday,{'label':' birthday '} ) }} </td>
+    </tr>
+    <tr><td>{{ form_row(form.phone,{'label':' phone '} ) }} </td>
+    </tr>
+    <tr><td>{{ form_row(form.pays,{'label':' pays '} ) }} </td>
+    </tr>
+    <tr><td>{{ form_row(form.adress,{'label':' adress '} ) }} </td>
+    </tr>
+    <tr><td>{{ form_row(form.gender,{'label':' gender '} ) }} </td>
+
+
+    </tr>
+    <tr><td>{{ form_row(form.validation,{'label':' validation '} ) }} </td>
+
+
+    </tr>
+    <tr><td>{{ form_row(form.idcode,{'label':' idcode '} ) }} </td>
+
+
+    </tr>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Zonedacces{% endblock %}
+
+{% block body %}
+    <h1>Create new Zonedacces</h1>
+
+    {{ include('zonedacces_front/_form.html.twig') }}
+
+    <a href="{{ path('zonedacces_front_index') }}">back to list</a>
+{% endblock %}

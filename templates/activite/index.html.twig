@@ -1,0 +1,49 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Activite index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">table d'activités</h6>
+        </div>
+            <div class="card-body">
+            <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Duree</th>
+                        <th>Type</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for activite in activites %}
+                    <tr>
+                        <td>{{ activite.id }}</td>
+                        <td>{{ activite.nom }}</td>
+                        <td>{{ activite.duree }}</td>
+                        <td>{{ activite.type }}</td>
+                        <td>
+                            <a class="btn btn-info" href="{{ path('activite_show', {'id': activite.id}) }}">Afficher</a>
+                            <a class="btn btn-warning" href="{{ path('activite_edit', {'id': activite.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a  class="btn btn-success" href="{{ path('activite_new') }}">ajouter une nouvelle activité</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

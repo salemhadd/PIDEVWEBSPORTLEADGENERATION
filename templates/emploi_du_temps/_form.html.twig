@@ -1,0 +1,15 @@
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+<table ALIGN="Center" >
+    <tr><td>{{ form_row(form.idseance,{'label':'Id Seance'} ) }}</td>
+
+    </tr>
+    <tr><td>{{ form_row(form.idzone,{'label':' Zone'} ) }}</td>
+
+    </tr>
+    <tr><td> {{ form_row(form.datee,{'label':'Date'} ) }}</td>
+
+    </tr>
+
+    <tr><td align="Center"> <button class="btn btn-success">{{ button_label|default('Save') }}</button><tr><td>
+{{ form_end(form) }}
+

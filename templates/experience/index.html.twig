@@ -1,0 +1,63 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Table des expériences utilisateurs{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Table des expériences utilisateurs</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+
+
+
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Contenus</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for experience in experience%}
+            <tr>
+
+                <td>{{ experience.titre }}</td>
+                <td>{{ experience.contenus }}</td>
+                <td>
+
+                    <a class="btn btn-danger btn-icon-split" href="{{ path('experience_show', {'id': experience.id}) }}">Afficher</a>
+                    <a class="btn btn-info btn-icon-split" href="{{ path('experience_edit', {'id': experience.id}) }}">Modifier ou Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+                {{ knp_pagination_render(experience) }}
+{% block ajouter %}
+<div class="col-md-3"> <a href="{{ path('experience_new') }}" class="btn btn-primary">Ajouter</a></div>
+    {% endblock %}
+    {% block telecharger %}
+        <div class="col-md-3"><a href="{{path('imprimerexperience')}}" class="btn btn-success">Telecharger Liste  Expériences</a> </div>
+
+    {% endblock %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
+
+    {% block css%}
+        {{ parent() }}
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    {% endblock %}
+
+{% block body %}
+    {% for m in materiel %}
+<div class="col-sm-6">
+    <div class="table-left wow fadeInUp" data-wow-delay="0.4s">
+        <div class="pricing-details">
+            <h2> <td  align="center">nom : {{ m.nom }} </td></h2>
+    <img src="{{ asset('uploads/'~ m.image) }}" alt="Speaker 1" style="height: 250px" class="img-fluid">
+
+            <form action="{{ path("updateRate",{'id':m.id}) }}" method="post">
+                <div class="col-lg-offset-2 col-lg-10">
+
+
+
+
+                    <div class="rateyo" id= "rating"
+                         data-rateyo-rating="4"
+                         data-rateyo-num-stars="5"
+                         data-rateyo-score="3">
+                    </div>
+
+                    <span class='result'>0</span>
+                    <input type="hidden" name="rating">
+
+                </div>
+
+                <div><input type="submit" name="add"> </div>
+
+
+            </form>
+
+            <br>
+
+
+            <a class="btn btn-success"   href="{{ path('DetailMateriel2',{id:m.id}) }}">Detail</a>
+        </div>
+    </div>
+</div>
+
+      {#  <tr  align="center">nom : {{ materiel.nom }} </td></tr>#}
+    {% endfor %}
+    {% block js %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+        <script>
+
+
+            $(function () {
+                $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+                    var rating = data.rating;
+                    $(this).parent().find('.score').text('score :'+ $(this).attr('data-rateyo-score'));
+                    $(this).parent().find('.result').text('rating :'+ rating);
+                    $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+                });
+            });
+
+        </script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+        <script>
+
+
+            $(function () {
+                $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+                    var rating = data.rating;
+                    $(this).parent().find('.score').text('score :'+ $(this).attr('data-rateyo-score'));
+                    $(this).parent().find('.result').text('rating :'+ rating);
+                    $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+                });
+            });
+
+        </script>
+{% endblock %}
+{% endblock %}

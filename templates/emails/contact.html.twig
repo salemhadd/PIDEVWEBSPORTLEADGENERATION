@@ -1,0 +1,16 @@
+<h1> Mail</h1>
+
+{{ contact_start(contact,{'attr':{'novalidate':'novalidate'}}) }}
+<table ALIGN="Center" >
+    <tr><td>{{ contact_row(contact.nom,{'label':'Nom'} ) }}</td>
+
+    </tr>
+    <tr><td>{{ contact_row(contact.email,{'label':'Email'} ) }}</td>
+
+    </tr>
+    <tr><td> {{ contact_row(contact.message|raw,{'label':'Message'} ) }}</td>
+
+    </tr>
+
+    <tr><td align="Center"> <button class="btn btn-success">{{ button_label|default('Envoyer') }}</button><tr><td>
+{{ contact_end(contact) }}

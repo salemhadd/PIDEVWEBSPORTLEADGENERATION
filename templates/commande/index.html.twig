@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande index{% endblock %}
+
+{% block body %}
+    <h1>Commande List</h1>
+
+
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idcommande</th>
+                <th>Idproduit</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id='hi'>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.idcommande }}</td>
+                <td>{{ commande.idproduit.idproduit }}</td>
+                <td>{{ commande.date |date('Y-m-d H:i:s') }}</td>
+                <td>{{ commande.email }}</td>
+                <td>{{ commande.id.id }}</td>
+                <td>
+                    <a class="btn btn-danger btn-icon-split"href="{{ path('commande_show', {'idcommande': commande.idcommande}) }}">show</a>
+                    <a class="btn btn-info btn-icon-split" href="{{ path('commande_edit', {'idcommande': commande.idcommande}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary"href="{{ path('commande_new') }}">Create new</a>
+
+        <a  class="btn btn-primary" href="{{ path('commande_imprimer') }}">Imprimer PDF</a>
+
+    <a class="btn btn-primary"  href="{{ path('order') }}">Trier</a>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <h1> </h1>
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Categorie</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                    <thead>
+            <tr>
+
+                <th>Nom</th>
+                <th>Description</th>
+                <th>TypeSport</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+
+                <td>{{ categorie.nom }}</td>
+                <td>{{ categorie.description }}</td>
+                <td>{{ categorie.typeSport }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}">show</a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
+                </td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                </div>
+            </div>
+        </div>
+
+    <a class="btn btn-success" href="{{ path('categorie_new') }}">Create new</a>
+        </div>
+{% endblock %}

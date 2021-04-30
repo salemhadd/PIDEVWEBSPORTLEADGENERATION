@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seances{% endblock %}
+
+{% block body %}
+    <h1>Seances</h1>
+    <input class="form-control" id="myInput" type="text" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Capacite</th>
+
+                <th>Dates</th>
+                <th>ActiviteId</th>
+            </tr>
+        </thead>
+        <tbody id='hi'>
+        {% for seance in seances %}
+            <tr>
+
+                <td>{{ seance.capacite }}</td>
+
+                <td>{{ seance.dates|date('Y-m-d H:i:s') }}</td>
+                <td>{{ seance.activiteid }}</td>
+                <td>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#hi tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <a  class="btn btn-primary" href="{{ path('affrosea_imprimer') }}">Imprimer PDF</a>
+{% endblock %}

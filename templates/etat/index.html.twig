@@ -1,0 +1,55 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Etat index{% endblock %}
+
+{% block body %}
+    <h1></h1>
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Etat</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+
+        <thead>
+            <tr>
+
+                <th>TypeEtat</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etat in etats %}
+            <tr>
+
+                <td>{{ etat.typeEtat }}</td>
+                <td>{{ etat.description }}</td>
+                <td>
+                    <a href="{{ path('etat_show', {'id': etat.id}) }}">show</a>
+                    <a href="{{ path('etat_edit', {'id': etat.id}) }}">edit</a>
+                </td>
+            </tr>
+
+
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+
+    </table>
+    </div>
+    </div>
+        </div>
+    <a class="btn btn-success" href="{{ path('etat_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('Statstique') }}">Stat</a>
+    </div>
+
+{% endblock %}

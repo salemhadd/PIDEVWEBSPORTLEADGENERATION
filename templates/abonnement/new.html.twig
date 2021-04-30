@@ -1,0 +1,19 @@
+{% extends 'base2.html.twig' %}
+
+{% block form %}
+
+<!DOCTYPE html>
+
+<title>New Abonnement</title>
+
+{% block body %}
+    <div style="text-align: center;">
+        <h1 class="m-0 font-weight-bold text-primary">Create new Abonnement</h1>
+    </div>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+    {{ include('abonnement/_form.html.twig') }}
+    <div style="text-align: center;">
+        <a class="btn btn-secondary" href="{{ path('abonnement_index') }}">back to list</a>
+    </div>
+{% endblock %}
+{% endblock %}

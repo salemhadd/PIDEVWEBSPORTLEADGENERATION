@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Avis{% endblock %}
+
+{% block body %}
+    <h1>Create new Avis</h1>
+
+    {% if app.user %}
+    {{ form_start(form) }}
+
+
+    {{ form_row(form.contenus,{'label':' contenus ','attr':{'placeholder': 'contenus...'}} ) }}
+<button type ="submit" class ="btn btn-success">Avis ! </button>
+
+    {{ form_end(form) }}
+
+    {% else  %}
+        <h2> Vous ne pouvez pas donner votre avis si vous n'etes as connecté ! </h2>
+            <a href="{{ path('security_login') }}" class="btn btn-primary">
+
+                Connexion
+
+            </a>
+    {% endif %}
+
+
+{% endblock %}

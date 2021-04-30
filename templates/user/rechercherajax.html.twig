@@ -1,0 +1,20 @@
+{% for user in user %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.image }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.birthday }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.pays }}</td>
+        <td>{{ user.adress }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.validation }}</td>
+        <td>{{ user.idcode }}</td>
+        <td><a href="{{ path('user_show', {'id': user.id}) }}">show</a></td>
+          <td>  <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a></td>
+    </tr>
+{% endfor %}

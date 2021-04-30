@@ -1,0 +1,81 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+
+
+
+    <h3 class="m-0 font-weight-bold text-primary">Votre Profil  </h3>
+    <div class="d-flex align-items-center"><input class="form-control" type="search" id="search" placeholder="Search by Email">
+        <a class="btn btn-primary" value="tri" href="{{ path('order') }}"><i class="fa fa-sort"></i></a>
+    </div>
+
+
+   {#  <table class="table">#}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Données Utilisateurs</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+
+            <tr>
+
+                <th>Username</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                {# <th>Image</th> #}
+                <th>Email</th>
+                <th>Password</th>
+                <th>Birthday</th>
+                <th>Phone</th>
+                <th>Pays</th>
+                <th>Adress</th>
+                <th>Gender</th>
+                <th>IDcodes</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in user %}
+            <tr>
+
+                <td>{{ user.username }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.firstname }}</td>
+             {# <td>{{ user.image }}</td> #}
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.birthday }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.pays }}</td>
+                <td>{{ user.adress }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.idcode }}</td>
+                <td>
+
+                    <a class="btn btn-danger btn-icon-split" href="{{ path('user_show', {'id': user.id}) }}">show</a>
+                    <a class="btn btn-info btn-icon-split" href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+
+                </td>
+            </tr>
+
+
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <a  class="btn btn-success" href="{{ path('security_registration') }}">Create new</a>
+    </div>
+{% endblock %}

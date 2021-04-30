@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+<div class="form-inline">
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.prix,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Prix'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{  form_errors(form.prix) }}
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.type,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'type'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{  form_errors(form.type) }}
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.activite,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'activite'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.activite) }}
+        </div>
+    </div>
+
+
+</div>
+<br>
+<div style="text-align: center;">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+<br>
+{{ form_end(form) }}

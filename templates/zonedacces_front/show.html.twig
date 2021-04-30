@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zonedacces{% endblock %}
+
+{% block body %}
+    <h1>Zonedacces</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idzone</th>
+                <td>{{ zonedacce.idzone }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ zonedacce.nom }}</td>
+            </tr>
+            <tr>
+                <th>Horaireouverture</th>
+                <td>{{ zonedacce.horaireouverture }}</td>
+            </tr>
+            <tr>
+                <th>Horairecloture</th>
+                <td>{{ zonedacce.horairecloture }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('zonedacces_front_index') }}">back to list</a>
+
+
+
+
+{% endblock %}

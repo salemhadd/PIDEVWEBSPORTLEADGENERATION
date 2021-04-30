@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+    <h1>Commande</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>idcommande</th>
+                <td>{{ commande.idcommande }}</td>
+            </tr>
+            <tr>
+                <th>idproduit</th>
+                <td>{{ commande.idproduit.idproduit }}</td>
+            </tr>
+            <tr>
+                <th>date</th>
+                <td>{{ commande.date |date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>email</th>
+                <td>{{ commande.email }}</td>
+            </tr>
+            <tr>
+                <th>id</th>
+                <td>{{ commande.id.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary" href="{{ path('commande_index') }}">back to list</a>
+
+    <a class="btn btn-primary" href="{{ path('commande_edit', {'idcommande': commande.idcommande}) }}">edit</a>
+
+    {{ include('commande/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block css%}
+    {{ parent() }}
+ <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+{% endblock %}
+{% block body %}
+    <h1></h1>
+
+  {#   <table class="table"> #}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Materiel</h6>
+    </div>
+    <div class="card-body">
+        <input class="form-control" id="myInput" type="text" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" align="center">
+
+    <thead>
+            <tr>
+
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Quantite</th>
+
+
+                <th>Categorie</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="hi">
+        {% for materiel in materiels %}
+            <tr>
+
+                <td>{{ materiel.nom }}</td>
+                <td>{{ materiel.marque }}</td>
+                <td>{{ materiel.quantite }}</td>
+
+                <td>{{ materiel.idcategorie }}</td>
+                <td>{{ materiel.idetat }}</td>
+                <td>
+                    <a href="{{ path('materiel_show', {'id': materiel.id}) }}">show</a>
+                    <a href="{{ path('materiel_edit', {'id': materiel.id}) }}">edit</a>
+
+                </td>
+            </tr>
+
+
+
+
+
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    </div>
+    </div>
+    </div>
+
+    <a class="btn btn-success" href="{{ path('materiel_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('materiel_imprimer') }}">PDF</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#hi tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script >$(document).ready( function () {
+            $('#dataTable').DataTable();
+        } );</script>
+{% endblock %}

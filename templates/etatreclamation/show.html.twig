@@ -1,0 +1,41 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Etatreclamation{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Etat Réclamation</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ etatreclamation.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Etat</th>
+                                <td>{{ etatreclamation.etat }}</td>
+                            </tr>
+                            <tr>
+                                <th>Couleur</th>
+                                <td>{{ etatreclamation.color }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <a class="btn btn-info" href="{{ path('etatreclamation_index') }}">Retour à la liste</a>
+
+                    <a class="btn btn-warning" href="{{ path('etatreclamation_edit', {'id': etatreclamation.id}) }}">Modifier</a>
+
+                    {{ include('etatreclamation/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

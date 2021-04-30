@@ -1,0 +1,50 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}TypeReclamation index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">table type réclamation</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Type</th>
+                            <th>Couleur</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for type_reclamation in type_reclamations %}
+                        <tr>
+                            <td>{{ type_reclamation.id }}</td>
+                            <td>{{ type_reclamation.type }}</td>
+                            <td>{{ type_reclamation.color }}</td>
+                            <td>
+                                <a class="btn btn-info" href="{{ path('type_reclamation_show', {'id': type_reclamation.id}) }}">Afficher</a>
+                                <a class="btn btn-warning" href="{{ path('type_reclamation_edit', {'id': type_reclamation.id}) }}">Modifier</a>
+
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a class="btn btn-success" href="{{ path('type_reclamation_new') }}">Ajouter</a>
+                <a class="btn btn-outline-dark" href="{{ path('teststatstyperec') }}">Stats</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

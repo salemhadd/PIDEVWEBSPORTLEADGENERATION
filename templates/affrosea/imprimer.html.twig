@@ -1,0 +1,34 @@
+
+
+{% block body %}
+    <h1 align="center"> Listes des seances</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Capacite</th>
+            <th>Dates</th>
+            <th>ActiviteId</th>
+        </tr>
+        </thead>
+        <tbody id='hi'>
+        {% for seance in seances %}
+            <tr>
+
+                <td>{{ seance.capacite }}</td>
+
+                <td>{{ seance.dates }}</td>
+                <td>{{ seance.activiteid }}</td>
+                <td>
+
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

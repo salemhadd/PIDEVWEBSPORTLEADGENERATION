@@ -1,0 +1,12 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}New EmploiDuTemps{% endblock %}
+
+{% block body %}
+    <h1>Create new EmploiDuTemps</h1>
+
+    {{ include('emploi_du_temps/_form.html.twig') }}
+
+    <a class="btn btn-secondary" href="{{ path('emploi_du_temps_index') }}">back to list</a>
+{% endblock %}
+

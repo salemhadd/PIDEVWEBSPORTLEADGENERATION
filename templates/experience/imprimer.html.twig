@@ -1,0 +1,69 @@
+{% block body %}
+    <h1 align="center" style="font-style: italic;color: #cc0099"> Listes des experience</h1>
+    <br><br><br><br>
+
+
+    <style>
+        #maTable2 {
+
+            width: 100%;
+
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+            border-collapse: collapse;
+            border: 1px solid #fff;
+
+        }
+        #maTable2 th, #maTable2 td {
+            font-family: 'Rock Salt', cursive;
+
+            padding: 3px;
+            border: 1px solid #1a7577;
+            text-align: center;
+            font-style: italic;
+
+        }
+        #maTable2 th {
+            padding: 15px;
+
+            background: #ff0066;
+            color: #ffffff;
+            font-weight: bold;
+            font-style: italic;
+            font-size: x-large;
+
+        }
+    </style>
+
+
+    <table id="maTable2">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Contenu</th>
+
+        </tr>
+        </thead>
+        <tbody id='hi'>
+        {% for experience in experience %}
+            <tr>
+
+                <td>{{ experience.id }}</td>
+
+                <td>{{ experience.titre }}</td>
+                <td>{{ experience.contenus }}</td>
+
+
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
